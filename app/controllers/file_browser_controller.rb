@@ -27,7 +27,7 @@ protected
 
   def set_up_paths
     @pointer = (params[:dir] || params[:file] || '')
-    @full_path = File.join(Rails.application.config.file_browser_storage_folder, @pointer)
+    @full_path = File.join(Rails.application.config.file_browser_starting_folder, @pointer)
     @publicly_accessible, @request_path = publicly_accessible?(@full_path)
     @request_path = @pointer if @publicly_accessible == false
   end
