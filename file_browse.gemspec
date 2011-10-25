@@ -7,6 +7,7 @@ require "file_browse/version"
 Gem::Specification.new do |s|
   s.name        = "file_browse"
   s.version     = FileBrowse::VERSION
+  s.platform    = Gem::Platform::RUBY
   s.authors     = ["Jared Howard"]
   s.email       = ["jared@howardpants.com"]
   s.homepage    = "http://github.com/jaredhoward/file_browse"
