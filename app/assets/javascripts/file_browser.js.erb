@@ -1,0 +1,49 @@
+//= require jquery
+//= require jquery-ui
+//= require jqueryFileTree
+
+$(document).ready(function() {
+  $('#file_tree').fileTree({
+    script: 'file_browser/tree.html',
+    multiFolder: false
+  }, function(file) {
+    $.ajax('file_browser/show.js', {
+      data: {
+        file: file
+      }
+    });
+  });
+});
+
+function use_file_name(file) {
+  if (window.opener) {
+    if (window.opener.CKEDITOR) {
+      window.opener.CKEDITOR.tools.callFunction($.getURLVar('CKEditorFuncNum'), file);
+    }
+    window.close();
+  } else {
+    alert(file);
+  }
+}
+
+(function($) {
+  $.getURLVars = function(href) {
+    var href        = href || window.location.href;
+    var params      = href.slice(href.indexOf('?') + 1).split('&');
+    var queryString = {};
+
+    $.each(params, function() {
+      var param = this.split('=');
+      queryString[param[0]] = param[1];
+    });
+
+    if (!$._queryStrings) $._queryStrings = {};
+    $._queryStrings[href] = queryString;
+  };
+
+  $.getURLVar = function(key, href) {
+    var href = href || window.location.href;
+    if (!$._queryStrings || !$._queryStrings[href]) $.getURLVars(href);
+    return (key) ? $._queryStrings[href][key] : $._queryStrings[href];
+  };
+})(jQuery);

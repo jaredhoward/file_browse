@@ -1,0 +1,8 @@
+<ul class="jqueryFileTree">
+<% if @publicly_accessible && ['bmp','gif','jpeg','jpg','pcx','png','tif','tiff'].include?(@file_attributes[:extension]) -%>
+  <li id="file-preview"><b>Preview:</b><span><%= image_tag(@request_path) %></span></li>
+<% end -%>
+  <li id="file_name" data-path="<%= @request_path %>"><b>Name:</b><span><%= @file_attributes[:basename] %></span></li>
+  <li id="file-size"><b>Size:</b><span><%= number_to_human_size(@file_attributes[:size]) %></span></li>
+  <li id="file-modified"><b>Modified:</b><span><%= @file_attributes[:mtime].strftime("%D %r") %></span></li>
+</ul>

@@ -1,0 +1,8 @@
+<ul class="jqueryFileTree" style="display:none">
+<% @entries.collect{|e| e if File.directory?(File.join(@full_path, e)) }.compact.each do |entry| -%>
+  <li class="directory collapsed"><a href="#" rel="<%= "#{@pointer}#{entry}" %>/"><%= entry %></a></li>
+<% end -%>
+<% @entries.collect{|e| e unless File.directory?(File.join(@full_path, e)) }.compact.each do |entry| -%>
+  <li class="file ext_<%= File.extname(entry).sub(/^./, '') %>"><a href="#" rel="<%= "#{@pointer}#{entry}" %>"><%= entry %></a></li>
+<% end -%>
+</ul>

@@ -1,0 +1,4 @@
+$('#file_info').html("<%= escape_javascript(render(:partial => 'file_attributes')) %>");
+if (window.opener) {
+  $('#file_info').append('<%= escape_javascript(button_to_function('Use', "use_file_name($('#file_name').data('path'))")) %>');
+}
