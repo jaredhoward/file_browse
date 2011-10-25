@@ -13,10 +13,11 @@ Gem::Specification.new do |s|
   s.summary     = "FileBrowse is a Rails Engine that browses the filesystem."
   s.description = "FileBrowse is a Rails Engine that browses the filesystem. It is coded for my applications. If it doesn't work for you, oh well."
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = `git ls-files`.split("\n")
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 3.1.1"
+  s.add_dependency "jquery-rails", "~> 1.0.16"
 
   # s.add_development_dependency "sqlite3"
 end
