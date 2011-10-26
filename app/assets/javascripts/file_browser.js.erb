@@ -17,33 +17,12 @@ $(document).ready(function() {
 
 function use_file_name(file) {
   if (window.opener) {
-    if (window.opener.CKEDITOR) {
-      window.opener.CKEDITOR.tools.callFunction($.getURLVar('CKEditorFuncNum'), file);
+    opener_id = $('#container').data('opener-id');
+    if (window.opener.CKEDITOR && opener_id) {
+      window.opener.CKEDITOR.tools.callFunction(opener_id, file);
     }
     window.close();
   } else {
     alert(file);
   }
 }
-
-(function($) {
-  $.getURLVars = function(href) {
-    var href        = href || window.location.href;
-    var params      = href.slice(href.indexOf('?') + 1).split('&');
-    var queryString = {};
-
-    $.each(params, function() {
-      var param = this.split('=');
-      queryString[param[0]] = param[1];
-    });
-
-    if (!$._queryStrings) $._queryStrings = {};
-    $._queryStrings[href] = queryString;
-  };
-
-  $.getURLVar = function(key, href) {
-    var href = href || window.location.href;
-    if (!$._queryStrings || !$._queryStrings[href]) $.getURLVars(href);
-    return (key) ? $._queryStrings[href][key] : $._queryStrings[href];
-  };
-})(jQuery);
