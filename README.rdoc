@@ -1,3 +1,28 @@
 = FileBrowse
 
 This project rocks and uses MIT-LICENSE.
+
+
+Install
+
+Gemfile
+gem 'file_browse', :git => 'git://github.com/jaredhoward/file_browse.git'
+
+Stylesheet Asset
+*= require file_browser
+
+Javascript Asset
+//= require file_browser
+//= require ckeditor/ckeditor
+//= require ckeditor/adapters/jquery
+
+$(function(){
+  $('textarea').ckeditor({
+    // extraPlugins: 'autogrow',
+    // autoGrow_maxHeight: 300,
+    // contentCSS: '/assets/ckeditor/contents.css',
+    filebrowserBrowseUrl : '/file_browser',
+    filebrowserUploadUrl : '/file_browser/upload'
+  });
+});
+
