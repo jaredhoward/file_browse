@@ -3,26 +3,30 @@
 This project rocks and uses MIT-LICENSE.
 
 
-Install
+== Install
 
-Gemfile
-gem 'file_browse', :git => 'git://github.com/jaredhoward/file_browse.git'
+=== Gemfile
+Include the FileBrowse gem in the apps gemfile with the following line:
+  gem 'file_browse', :git => 'git://github.com/jaredhoward/file_browse.git'
 
-Stylesheet Asset
-*= require file_browser
+=== Stylesheet Asset
+Include the FileBrowse stylesheet asset with the following line in your sprocket supported asset:
+  *= require file_browser
 
-Javascript Asset
-//= require file_browser
-//= require ckeditor/ckeditor
-//= require ckeditor/adapters/jquery
+=== Javascript Asset
+Include the FileBrowse javascript assets with the following lines in your sprocket supported asset:
+  //= require file_browser
+  //= require ckeditor/ckeditor
+  //= require ckeditor/adapters/jquery
 
-$(function(){
-  $('textarea').ckeditor({
-    // extraPlugins: 'autogrow',
-    // autoGrow_maxHeight: 300,
-    // contentCSS: '/assets/ckeditor/contents.css',
-    filebrowserBrowseUrl : '/file_browser',
-    filebrowserUploadUrl : '/file_browser/upload'
+Example javascript (jQuery) for using CKeditor and FileBrowse on any textarea:
+  $(function(){
+    $('textarea').ckeditor({
+      // extraPlugins: 'autogrow',
+      // autoGrow_maxHeight: 300,
+      // contentCSS: '/assets/ckeditor/contents.css',
+      filebrowserBrowseUrl : '/file_browser',
+      filebrowserUploadUrl : '/file_browser/upload'
+    });
   });
-});
 
